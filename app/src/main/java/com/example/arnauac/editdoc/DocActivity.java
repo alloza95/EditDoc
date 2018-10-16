@@ -1,6 +1,7 @@
 package com.example.arnauac.editdoc;
 
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,5 +46,17 @@ public class DocActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case EDIT_TITLE:
+                if (resultCode == RESULT_OK){
+                    title = data.getStringExtra("text");
+                    title_view.setText(title);
+                }
+                break;
+        }
     }
 }
