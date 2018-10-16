@@ -42,6 +42,7 @@ public class DocActivity extends AppCompatActivity {
             case R.id.option_edit_title:
                 Intent intent = new Intent(this, EditActivity.class);
                 intent.putExtra("text", title);
+                intent.putExtra("largeText", text);
                 startActivityForResult(intent, EDIT_TITLE);
                 break;
         }
@@ -54,7 +55,9 @@ public class DocActivity extends AppCompatActivity {
             case EDIT_TITLE:
                 if (resultCode == RESULT_OK){
                     title = data.getStringExtra("text");
+                    text = data.getStringExtra("largeText");
                     title_view.setText(title);
+                    text_view.setText(text);
                 }
                 break;
         }
